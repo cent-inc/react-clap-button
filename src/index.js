@@ -5,7 +5,6 @@ import ClapWrap from './components/ClapWrap'
 import ClapIcon from './components/ClapIcon'
 import ClapButton from './components/ClapButton'
 import ClapCount from './components/ClapCount'
-import ClapCountTotal from './components/ClapCountTotal'
 
 const defaultTheme = {
   primaryColor: 'rgb(189, 195, 199)',
@@ -28,7 +27,6 @@ const Clap = class extends React.Component {
     this.clapButtonRef = React.createRef()
     this.clapIconRef = React.createRef()
     this.clapCountRef = React.createRef()
-    this.clapCountTotalRef = React.createRef()
   }
 
   componentDidMount () {
@@ -36,39 +34,6 @@ const Clap = class extends React.Component {
     const mojs = require('mo-js')
 
     const tlDuration = 300
-    // const triangleBurst = new mojs.Burst({
-    //   parent: this.clapButtonRef.current,
-    //   radius: { 50: 95 },
-    //   count: 5,
-    //   angle: 30,
-    //   children: {
-    //     shape: 'polygon',
-    //     radius: { 6: 0 },
-    //     scale: 1,
-    //     stroke: 'rgba(211,84,0 ,0.5)',
-    //     strokeWidth: 2,
-    //     angle: 210,
-    //     delay: 30,
-    //     speed: 0.2,
-    //     easing: mojs.easing.bezier(0.1, 1, 0.3, 1),
-    //     duration: tlDuration
-    //   }
-    // })
-
-    // const circleBurst = new mojs.Burst({
-    //   parent: this.clapButtonRef.current,
-    //   radius: { 50: 75 },
-    //   angle: 25,
-    //   duration: tlDuration,
-    //   children: {
-    //     shape: 'circle',
-    //     fill: 'rgba(149,165,166 ,0.5)',
-    //     delay: 30,
-    //     speed: 0.2,
-    //     radius: { 3: 0 },
-    //     easing: mojs.easing.bezier(0.1, 1, 0.3, 1)
-    //   }
-    // })
 
     const countAnimation = new mojs.Html({
       el: this.clapCountRef.current,
@@ -85,16 +50,6 @@ const Clap = class extends React.Component {
 
     const opacityStart = this.props.count > 0 && this.state.unclicked ? 1 : 0
 
-    // const countTotalAnimation = new mojs.Html({
-    //   el: this.clapCountTotalRef.current,
-    //   isShowStart: false,
-    //   isShowEnd: true,
-    //   opacity: { [opacityStart]: 1 },
-    //   delay: (3 * tlDuration) / 2,
-    //   duration: tlDuration,
-    //   y: { 0: -3 }
-    // })
-
     const scaleButton = new mojs.Html({
       el: this.clapButtonRef.current,
       duration: tlDuration,
@@ -107,9 +62,6 @@ const Clap = class extends React.Component {
     this.animationTimeline = new mojs.Timeline()
     this.animationTimeline.add([
       countAnimation,
-      // countTotalAnimation,
-      // circleBurst,
-      // triangleBurst,
       scaleButton
     ])
   }
@@ -123,16 +75,16 @@ const Clap = class extends React.Component {
     const { maxCount, onCountChange } = this.props
     this.animationTimeline.replay()
 
-    this.setState(({ isClicked, count, countTotal }) => {
+    this.setState(({ count, countTotal }) => {
       if (count < maxCount) {
         onCountChange({
           count: count + 1,
-          countTotal: isClicked ? countTotal : (countTotal + 1)
+          countTotal: count > 0 ? countTotal : (countTotal + 1)
         })
         return {
           unclicked: false,
           count: count + 1,
-          countTotal: isClicked ? countTotal : (countTotal + 1),
+          countTotal: count > 0 ? countTotal : (countTotal + 1),
           isClicked: true
         }
       }
@@ -170,9 +122,6 @@ const Clap = class extends React.Component {
             <ClapCount ref={this.clapCountRef} className='clap--count'>
               {count}
             </ClapCount>
-            <ClapCountTotal ref={this.clapCountTotalRef} className='clap--count-total'>
-              {Number(countTotal).toLocaleString()}
-            </ClapCountTotal>
           </ClapButton>
         </ClapWrap>
       </ThemeProvider>
