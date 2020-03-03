@@ -37,21 +37,6 @@ const Clap = class extends React.Component {
 
     const tlDuration = 300
 
-    const circleBurst = new mojs.Burst({
-      parent: this.clapButtonRef.current,
-      radius: { 50: 75 },
-      angle: 25,
-      duration: tlDuration,
-      children: {
-        shape: 'circle',
-        fill: 'rgba(149,165,166 ,0.5)',
-        delay: 30,
-        speed: 0.2,
-        radius: { 3: 0 },
-        easing: mojs.easing.bezier(0.1, 1, 0.3, 1)
-      }
-    })
-
     const countAnimation = new mojs.Html({
       el: this.clapCountRef.current,
       isShowStart: false,
@@ -90,8 +75,7 @@ const Clap = class extends React.Component {
     this.animationTimeline.add([
       countAnimation,
       countTotalAnimation,
-      scaleButton,
-      circleBurst
+      scaleButton
     ])
   }
 
