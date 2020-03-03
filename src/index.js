@@ -10,7 +10,7 @@ import ClapCountTotal from './components/ClapCountTotal'
 const defaultTheme = {
   primaryColor: 'rgb(189, 195, 199)',
   secondaryColor: 'rgb(39, 174, 96)',
-  size: 35
+  size: 40
 }
 
 const Clap = class extends React.Component {
