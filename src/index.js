@@ -56,7 +56,7 @@ const Clap = class extends React.Component {
       el: this.clapCountTotalRef.current,
       isShowStart: false,
       isShowEnd: true,
-      opacity: { 0: 1 },
+      opacity: { 0: 0, 1: 1 },
       delay: (3 * tlDuration) / 2,
       duration: tlDuration,
       y: { 0: -3 }
