@@ -55,7 +55,9 @@ const Clap = class extends React.Component {
     const countTotalAnimation = new mojs.Html({
       el: this.clapCountTotalRef.current,
       isShowStart: true,
-      isShowEnd: true
+      isShowEnd: true,
+      opacity: { 1 : 0 },
+      duration: 0
     }).then({
       opacity: { 0: 1 },
       delay: (3 * tlDuration) / 2,
