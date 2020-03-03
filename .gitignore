@@ -1,6 +1,5 @@
 node_modules
 .DS_Store
 storybook-static
-dist
 .envrc
 stats.html

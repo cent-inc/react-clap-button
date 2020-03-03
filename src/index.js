@@ -10,7 +10,7 @@ import ClapCountTotal from './components/ClapCountTotal'
 const defaultTheme = {
   primaryColor: 'rgb(189, 195, 199)',
   secondaryColor: 'rgb(39, 174, 96)',
-  size: 70
+  size: 35
 }
 
 const Clap = class extends React.Component {
@@ -36,24 +36,6 @@ const Clap = class extends React.Component {
     const mojs = require('mo-js')
 
     const tlDuration = 300
-    const triangleBurst = new mojs.Burst({
-      parent: this.clapButtonRef.current,
-      radius: { 50: 95 },
-      count: 5,
-      angle: 30,
-      children: {
-        shape: 'polygon',
-        radius: { 6: 0 },
-        scale: 1,
-        stroke: 'rgba(211,84,0 ,0.5)',
-        strokeWidth: 2,
-        angle: 210,
-        delay: 30,
-        speed: 0.2,
-        easing: mojs.easing.bezier(0.1, 1, 0.3, 1),
-        duration: tlDuration
-      }
-    })
 
     const circleBurst = new mojs.Burst({
       parent: this.clapButtonRef.current,
@@ -109,8 +91,7 @@ const Clap = class extends React.Component {
       countAnimation,
       countTotalAnimation,
       scaleButton,
-      circleBurst,
-      triangleBurst
+      circleBurst
     ])
   }
 
@@ -165,7 +146,7 @@ const Clap = class extends React.Component {
           >
             <ClapIcon ref={this.clapIconRef} className='clap--icon' isClicked={isClicked} />
             <ClapCount ref={this.clapCountRef} className='clap--count'>
-              ++{count}
+              +{count}
             </ClapCount>
             <ClapCountTotal ref={this.clapCountTotalRef} className='clap--count-total'>
               {Number(countTotal).toLocaleString()}
