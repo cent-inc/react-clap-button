@@ -123,13 +123,16 @@ const Clap = class extends React.Component {
     const { maxCount, onCountChange } = this.props
     this.animationTimeline.replay()
 
-    this.setState(({ count, countTotal }) => {
+    this.setState(({ isClicked, count, countTotal }) => {
       if (count < maxCount) {
-        onCountChange({ count: count + 1, countTotal: countTotal + 1 })
+        onCountChange({
+          count: count + 1,
+          countTotal: isClicked ? countTotal : (countTotal + 1)
+        })
         return {
           unclicked: false,
           count: count + 1,
-          countTotal: countTotal + 1,
+          countTotal: isClicked ? countTotal : (countTotal + 1),
           isClicked: true
         }
       }
