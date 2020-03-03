@@ -50,13 +50,13 @@ const Clap = class extends React.Component {
       delay: tlDuration / 2
     })
 
-    const opacityStart = this.props.count > 0 && this.state.unclicked ? 1 : 0
+    // const opacityStart = this.props.count > 0 && this.state.unclicked ? 1 : 0
 
     const countTotalAnimation = new mojs.Html({
       el: this.clapCountTotalRef.current,
-      isShowStart: true,
+      isShowStart: false,
       isShowEnd: true,
-      opacity: { [opacityStart]: 1 },
+      opacity: { 0: 1 },
       delay: (3 * tlDuration) / 2,
       duration: tlDuration,
       y: { 0: -3 }
