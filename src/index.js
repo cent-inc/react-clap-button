@@ -54,7 +54,7 @@ const Clap = class extends React.Component {
 
     const countTotalAnimation = new mojs.Html({
       el: this.clapCountTotalRef.current,
-      isShowStart: false,
+      isShowStart: true,
       isShowEnd: true,
       opacity: { [opacityStart]: 1 },
       delay: (3 * tlDuration) / 2,
@@ -130,7 +130,7 @@ const Clap = class extends React.Component {
           >
             <ClapIcon ref={this.clapIconRef} className='clap--icon' isClicked={isClicked} />
             <ClapCount ref={this.clapCountRef} className='clap--count'>
-              +{count}
+              {count}
             </ClapCount>
             <ClapCountTotal ref={this.clapCountTotalRef} className='clap--count-total'>
               {Number(countTotal).toLocaleString()}
@@ -145,7 +145,7 @@ const Clap = class extends React.Component {
 Clap.defaultProps = {
   countTotal: 0,
   count: 0,
-  maxCount: 50,
+  maxCount: 999,
   isClicked: false,
   onCountChange: () => {},
   iconComponent: ClapIcon

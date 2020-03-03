@@ -14,7 +14,7 @@ const ClapCount = styled.span`
       height: ${threeQuarters};
       width: ${threeQuarters};
       line-height: ${threeQuarters};
-      top: -${size / 4}px;
+      top: -${threeQuarters}px;
       left: ${size / 8}px;
       background: ${secondaryColor};
     `
