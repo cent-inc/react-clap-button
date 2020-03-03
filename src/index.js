@@ -165,7 +165,7 @@ const Clap = class extends React.Component {
           >
             <ClapIcon ref={this.clapIconRef} className='clap--icon' isClicked={isClicked} />
             <ClapCount ref={this.clapCountRef} className='clap--count'>
-              +{count}
+              ++{count}
             </ClapCount>
             <ClapCountTotal ref={this.clapCountTotalRef} className='clap--count-total'>
               {Number(countTotal).toLocaleString()}
