@@ -37,6 +37,21 @@ const Clap = class extends React.Component {
 
     const tlDuration = 300
 
+    const circleBurst = new mojs.Burst({
+      parent: this.clapButtonRef.current,
+      radius: { 50: 75 },
+      angle: 25,
+      duration: tlDuration,
+      children: {
+        shape: 'circle',
+        fill: 'rgba(149,165,166 ,0.5)',
+        delay: 30,
+        speed: 0.2,
+        radius: { 3: 0 },
+        easing: mojs.easing.bezier(0.1, 1, 0.3, 1)
+      }
+    })
+
     const countAnimation = new mojs.Html({
       el: this.clapCountRef.current,
       isShowStart: false,
@@ -52,18 +67,15 @@ const Clap = class extends React.Component {
 
     const opacityStart = this.props.count > 0 && this.state.unclicked ? 1 : 0
 
-    const countTotalAnimation = new mojs.Html({
-      el: this.clapCountTotalRef.current,
-      isShowStart: true,
-      isShowEnd: true,
-      opacity: { 1 : 0 },
-      duration: 0
-    }).then({
-      opacity: { 0: 1 },
-      delay: (3 * tlDuration) / 2,
-      duration: tlDuration,
-      y: { 3: 0 }
-    });
+    // const countTotalAnimation = new mojs.Html({
+    //   el: this.clapCountTotalRef.current,
+    //   isShowStart: false,
+    //   isShowEnd: true,
+    //   opacity: { [opacityStart]: 1 },
+    //   delay: (3 * tlDuration) / 2,
+    //   duration: tlDuration,
+    //   y: { 0: -3 }
+    // })
 
     const scaleButton = new mojs.Html({
       el: this.clapButtonRef.current,
@@ -77,8 +89,9 @@ const Clap = class extends React.Component {
     this.animationTimeline = new mojs.Timeline()
     this.animationTimeline.add([
       countAnimation,
-      countTotalAnimation,
-      scaleButton
+      // countTotalAnimation,
+      scaleButton,
+      circleBurst
     ])
   }
 
@@ -133,7 +146,7 @@ const Clap = class extends React.Component {
           >
             <ClapIcon ref={this.clapIconRef} className='clap--icon' isClicked={isClicked} />
             <ClapCount ref={this.clapCountRef} className='clap--count'>
-              {count}
+              +{count}
             </ClapCount>
             <ClapCountTotal ref={this.clapCountTotalRef} className='clap--count-total'>
               {Number(countTotal).toLocaleString()}
