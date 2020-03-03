@@ -29,6 +29,18 @@ const Clap = class extends React.Component {
     this.clapCountRef = React.createRef()
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (
+      nextProps.count != this.state.count ||
+      nextProps.countTotal != this.state.countTotal
+    ) {
+      this.setState({
+        countTotal: nextProps.countTotal,
+        count: nextProps.count
+      });
+    }
+  }
+
   componentDidMount () {
     // require mo-js on mount so it does not break SSR
     const mojs = require('mo-js')
