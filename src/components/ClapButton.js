@@ -57,4 +57,11 @@ const ClapButton = styled.button`
   `}
 `
 
-export default ClapButton
+const ClapButtonWrapper = React.forwardRef((props, ref) => (
+  <ClapButton
+    ref={ref}
+    {...props}
+  />
+));
+
+export default ClapButtonWrapper;

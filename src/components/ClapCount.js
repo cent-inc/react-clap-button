@@ -21,4 +21,11 @@ const ClapCount = styled.span`
   }}
 `
 
-export default ClapCount
+const ClapCountWrapper = React.forwardRef((props, ref) => (
+  <ClapCount
+    ref={ref}
+    {...props}
+  />
+));
+
+export default ClapCountWrapper;
