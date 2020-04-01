@@ -130,7 +130,9 @@ const Clap = class extends React.Component {
             onMouseLeave={e => this.setState({ isHover: false })}
             isHover={isHover && count === 0}
           >
-            <ClapIcon ref={this.clapIconRef} className='clap--icon' isClicked={isClicked} />
+            <ClapCount ref={this.clapCountRef} className='clap--count'>
+              {count}
+            </ClapCount>
           </ClapButton>
         </ClapWrap>
       </ThemeProvider>
