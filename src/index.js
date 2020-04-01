@@ -60,22 +60,22 @@ const Clap = class extends React.Component {
     //   delay: tlDuration / 2
     // })
 
-    const opacityStart = this.props.count > 0 && this.state.unclicked ? 1 : 0
+    // const opacityStart = this.props.count > 0 && this.state.unclicked ? 1 : 0
 
-    const scaleButton = new mojs.Html({
-      el: this.clapButtonRef.current,
-      duration: tlDuration,
-      scale: { 1.3: 1 },
-      easing: mojs.easing.out
-    })
+    // const scaleButton = new mojs.Html({
+    //   el: this.clapButtonRef.current,
+    //   duration: tlDuration,
+    //   scale: { 1.3: 1 },
+    //   easing: mojs.easing.out
+    // })
 
-    const clap = this.clapButtonRef.current
-    clap.style.transform = 'scale(1, 1)'
-    this.animationTimeline = new mojs.Timeline()
-    this.animationTimeline.add([
-      // countAnimation,
-      scaleButton
-    ])
+    // const clap = this.clapButtonRef.current
+    // clap.style.transform = 'scale(1, 1)'
+    // this.animationTimeline = new mojs.Timeline()
+    // this.animationTimeline.add([
+    //   countAnimation,
+    //   scaleButton
+    // ])
   }
 
   getTheme () {
@@ -130,6 +130,10 @@ const Clap = class extends React.Component {
             onMouseLeave={e => this.setState({ isHover: false })}
             isHover={isHover && count === 0}
           >
+            <ClapIcon ref={this.clapIconRef} className='clap--icon' isClicked={isClicked} />
+            <ClapCount ref={this.clapCountRef} className='clap--count'>
+              {count}
+            </ClapCount>
           </ClapButton>
         </ClapWrap>
       </ThemeProvider>
