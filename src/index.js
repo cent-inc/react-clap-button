@@ -25,7 +25,6 @@ const Clap = class extends React.Component {
     this.onClick = this.onClick.bind(this)
     this.onClickClear = this.onClickClear.bind(this)
     this.clapButtonRef = React.createRef()
-    this.clapIconRef = React.createRef()
     this.clapCountRef = React.createRef()
   }
 
@@ -47,35 +46,35 @@ const Clap = class extends React.Component {
 
     const tlDuration = 300
 
-    // const countAnimation = new mojs.Html({
-    //   el: this.clapCountRef.current,
-    //   isShowStart: false,
-    //   isShowEnd: true,
-    //   y: { 0: -30 },
-    //   opacity: { 0: 1 },
-    //   duration: tlDuration
-    // }).then({
-    //   opacity: { 1: 0 },
-    //   y: -80,
-    //   delay: tlDuration / 2
-    // })
+    const countAnimation = new mojs.Html({
+      el: this.clapCountRef.current,
+      isShowStart: false,
+      isShowEnd: true,
+      y: { 0: -30 },
+      opacity: { 0: 1 },
+      duration: tlDuration
+    }).then({
+      opacity: { 1: 0 },
+      y: -80,
+      delay: tlDuration / 2
+    })
 
-    // const opacityStart = this.props.count > 0 && this.state.unclicked ? 1 : 0
+    const opacityStart = this.props.count > 0 && this.state.unclicked ? 1 : 0
 
-    // const scaleButton = new mojs.Html({
-    //   el: this.clapButtonRef.current,
-    //   duration: tlDuration,
-    //   scale: { 1.3: 1 },
-    //   easing: mojs.easing.out
-    // })
+    const scaleButton = new mojs.Html({
+      el: this.clapButtonRef.current,
+      duration: tlDuration,
+      scale: { 1.3: 1 },
+      easing: mojs.easing.out
+    })
 
-    // const clap = this.clapButtonRef.current
-    // clap.style.transform = 'scale(1, 1)'
-    // this.animationTimeline = new mojs.Timeline()
-    // this.animationTimeline.add([
-    //   countAnimation,
-    //   scaleButton
-    // ])
+    const clap = this.clapButtonRef.current
+    clap.style.transform = 'scale(1, 1)'
+    this.animationTimeline = new mojs.Timeline()
+    this.animationTimeline.add([
+      countAnimation,
+      scaleButton
+    ])
   }
 
   getTheme () {
@@ -130,6 +129,7 @@ const Clap = class extends React.Component {
             onMouseLeave={e => this.setState({ isHover: false })}
             isHover={isHover && count === 0}
           >
+            <ClapIcon className='clap--icon' isClicked={isClicked} />
             <ClapCount ref={this.clapCountRef} className='clap--count'>
               {count}
             </ClapCount>

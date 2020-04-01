@@ -13,7 +13,6 @@ const Icon = styled.svg`
 
 const ClapIcon = React.forwardRef((props, ref) => (
   <Icon
-    ref={ref}
     xmlns='http://www.w3.org/2000/svg'
     viewBox='-549 338 100.1 125'
     {...props}
