@@ -17,7 +17,6 @@ const ClapButton = styled.button`
   position: relative;
   outline: 1px solid transparent;
   border-radius: 50%;
-  background: #fff;
   transition: border 0.1s ease-in;
 
   &::after {
@@ -39,10 +38,11 @@ const ClapButton = styled.button`
     }
   `}
 
-  ${({theme: {primaryColor, secondaryColor, size}}) => css`
+  ${({theme: {primaryColor, secondaryColor, size, backgroundColor}}) => css`
     width: ${size}px;
     height: ${size}px;
     border: 1px solid ${primaryColor};
+    background: ${backgroundColor};
 
     &::after {
       width: ${size - 1}px;

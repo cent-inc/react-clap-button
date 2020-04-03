@@ -7,6 +7,7 @@ import ClapButton from './components/ClapButton'
 import ClapCount from './components/ClapCount'
 
 const defaultTheme = {
+  backgroundColor: 'rgb(255,255,255)',
   primaryColor: 'rgb(189, 195, 199)',
   secondaryColor: 'rgb(39, 174, 96)',
   size: 40
