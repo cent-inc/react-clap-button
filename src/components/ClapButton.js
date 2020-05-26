@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css, keyframes} from 'styled-components'
 
 const shockwave = ({theme: {secondaryColor}}) => keyframes`
-0%{
+ 0%{
      box-shadow:0 0
  }
  70%{
@@ -18,6 +18,7 @@ const ClapButton = styled.button`
   outline: 1px solid transparent;
   border-radius: 50%;
   transition: border 0.1s ease-in;
+  padding: 0;
 
   &::after {
     content: '';
